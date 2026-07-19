@@ -1,35 +1,345 @@
-ISAAC_TECH
-SYSTEM ONLINE
-whatsapp multi-device bot
-ISAAC
-TECH
-Open-source, self-hosted, and built to keep running. ISAAC-MD is a Baileys-powered WhatsApp bot with AI, moderation, downloads, and 200+ commands — deploy your own instance in minutes.
+cd ~/isaac-hub
+cat > index.html << 'ISAACEOF'
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ISAAC TECH — Nexus</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0a0d;
+    --surface:#111116;
+    --surface-2:#17171d;
+    --line:#232329;
+    --text:#e9e9ee;
+    --muted:#83838f;
+    --red:#ff2b3d;
+    --red-dim:#7a1420;
+    --cyan:#54e0ff;
+    --cyan-dim:#0f5b6e;
+  }
 
-Deploy to Heroku
-View source
-[REPO]
-Source Code
-Full ISAAC-MD codebase on GitHub. Fork it, star it, or read through how it's built.
+  *{box-sizing:border-box; margin:0; padding:0;}
 
-github.com/kingplayboi/ISAAC
-↗
-[PAIR]
-Get a Session
-Generate your SESSION_ID via QR code or pairing code — takes under a minute.
+  html{scroll-behavior:smooth;}
 
-kingpin-sjlx.onrender.com
-↗
-[DEPLOY]
-One-Click Deploy
-Spin up your own ISAAC-MD instance on Heroku. No server management required.
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter', sans-serif;
+    overflow-x:hidden;
+    position:relative;
+  }
 
-heroku.com/deploy
-↗
-[CONTACT]
-Talk to the Dev
-Questions, bugs, or feature requests — reach out directly on WhatsApp.
+  body::before{
+    content:'';
+    position:fixed;
+    inset:0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+    background-size:44px 44px;
+    pointer-events:none;
+    z-index:0;
+  }
 
-wa.me/254754574642
-↗
-ISAAC TECH © 2026 — made on earth by humans
-GitHub  ·  Pairing
+  .wrap{position:relative; z-index:1;}
+
+  nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:28px 6vw;
+    font-family:'JetBrains Mono', monospace;
+    font-size:13px;
+    letter-spacing:0.04em;
+  }
+  nav .logo{color:var(--text); font-weight:700;}
+  nav .logo span{color:var(--red);}
+  nav .status{
+    color:var(--cyan);
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  nav .dot{
+    width:7px; height:7px; border-radius:50%;
+    background:var(--cyan);
+    box-shadow:0 0 8px var(--cyan);
+    animation:blink 2s infinite;
+  }
+  @keyframes blink{0%,100%{opacity:1;} 50%{opacity:0.3;}}
+
+  .hero{
+    min-height:88vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:40px 6vw 60px;
+    position:relative;
+  }
+
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.25em;
+    color:var(--muted);
+    text-transform:uppercase;
+    margin-bottom:28px;
+  }
+  .eyebrow::before{content:'// '; color:var(--red);}
+
+  h1.wordmark{
+    font-family:'Anton', sans-serif;
+    font-weight:400;
+    font-size:clamp(64px, 14vw, 168px);
+    line-height:0.92;
+    letter-spacing:0.01em;
+    text-transform:uppercase;
+    color:var(--text);
+    text-shadow:
+      0 0 24px rgba(255,43,61,0.35),
+      0 0 60px rgba(255,43,61,0.15);
+    position:relative;
+  }
+  h1.wordmark .tech{
+    display:block;
+    color:var(--red);
+    font-size:0.42em;
+    margin-top:-0.15em;
+    letter-spacing:0.12em;
+  }
+
+  .pulse-wrap{
+    width:min(720px, 88vw);
+    margin:36px auto 30px;
+  }
+  .pulse-wrap svg{width:100%; height:auto; display:block;}
+  .pulse-path{
+    fill:none;
+    stroke:var(--cyan);
+    stroke-width:2.4;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+    filter:drop-shadow(0 0 6px var(--cyan)) drop-shadow(0 0 16px rgba(84,224,255,0.5));
+    stroke-dasharray:400;
+    stroke-dashoffset:400;
+    animation:draw 1.8s ease-out forwards, beat 2.6s ease-in-out 2s infinite;
+  }
+  @keyframes draw{ to{ stroke-dashoffset:0; } }
+  @keyframes beat{
+    0%,100%{ opacity:0.55; }
+    8%{ opacity:1; }
+    16%{ opacity:0.55; }
+    24%{ opacity:0.9; }
+    32%{ opacity:0.55; }
+  }
+
+  .tagline{
+    font-size:clamp(15px, 2vw, 18px);
+    color:var(--muted);
+    max-width:560px;
+    line-height:1.6;
+    margin-bottom:36px;
+  }
+  .tagline b{color:var(--text); font-weight:600;}
+
+  .hero-ctas{
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+    justify-content:center;
+  }
+
+  .btn{
+    font-family:'JetBrains Mono', monospace;
+    font-size:13px;
+    letter-spacing:0.03em;
+    padding:13px 24px;
+    border-radius:3px;
+    text-decoration:none;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    transition:transform 0.15s ease, box-shadow 0.15s ease;
+    border:1px solid transparent;
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn.primary{
+    background:var(--red);
+    color:#0a0a0d;
+    font-weight:700;
+  }
+  .btn.primary:hover{ box-shadow:0 6px 24px rgba(255,43,61,0.35); }
+  .btn.ghost{
+    background:transparent;
+    color:var(--text);
+    border-color:var(--line);
+  }
+  .btn.ghost:hover{ border-color:var(--cyan); color:var(--cyan); }
+
+  .panels{
+    padding:20px 6vw 100px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+    max-width:1180px;
+    margin:0 auto;
+  }
+
+  .panel{
+    background:var(--surface);
+    padding:34px 30px;
+    position:relative;
+    transition:background 0.2s ease;
+    text-decoration:none;
+    color:inherit;
+    display:flex;
+    flex-direction:column;
+    min-height:220px;
+  }
+  .panel:hover{ background:var(--surface-2); }
+  .panel:hover .tag{ color:var(--cyan); border-color:var(--cyan-dim); }
+  .panel:hover .arrow{ transform:translate(3px,-3px); opacity:1; }
+
+  .tag{
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.08em;
+    color:var(--muted);
+    border:1px solid var(--line);
+    padding:4px 9px;
+    border-radius:2px;
+    width:fit-content;
+    margin-bottom:22px;
+    transition:color 0.2s ease, border-color 0.2s ease;
+  }
+
+  .panel h3{
+    font-family:'Inter', sans-serif;
+    font-size:21px;
+    font-weight:700;
+    margin-bottom:10px;
+  }
+  .panel p{
+    font-size:14px;
+    color:var(--muted);
+    line-height:1.55;
+    flex-grow:1;
+  }
+  .panel .foot{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-top:22px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    color:var(--text);
+  }
+  .arrow{
+    font-size:16px;
+    opacity:0.5;
+    transition:transform 0.2s ease, opacity 0.2s ease;
+  }
+
+  footer{
+    border-top:1px solid var(--line);
+    padding:30px 6vw;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:12px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    color:var(--muted);
+  }
+  footer a{color:var(--muted); text-decoration:none;}
+  footer a:hover{color:var(--cyan);}
+
+  @media (max-width:640px){
+    .hero{min-height:auto; padding-top:60px;}
+    nav{padding:22px 5vw;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <nav>
+    <div class="logo">ISAAC<span>_</span>TECH</div>
+    <div class="status"><span class="dot"></span>SYSTEM ONLINE</div>
+  </nav>
+
+  <section class="hero">
+    <div class="eyebrow">whatsapp multi-device bot</div>
+    <h1 class="wordmark">ISAAC<span class="tech">TECH</span></h1>
+
+    <div class="pulse-wrap" aria-hidden="true">
+      <svg viewBox="0 0 400 60" preserveAspectRatio="none">
+        <path class="pulse-path" d="M0,30 L120,30 L138,10 L152,50 L166,22 L180,30 L400,30" />
+      </svg>
+    </div>
+
+    <p class="tagline">
+      Open-source, self-hosted, and built to keep running.
+      <b>ISAAC-MD</b> is a Baileys-powered WhatsApp bot with AI, moderation,
+      downloads, and 200+ commands — deploy your own instance in minutes.
+    </p>
+
+    <div class="hero-ctas">
+      <a class="btn primary" href="https://heroku.com/deploy?template=https://github.com/kingplayboi/ISAAC" target="_blank" rel="noopener">Deploy to Heroku</a>
+      <a class="btn ghost" href="https://github.com/kingplayboi/ISAAC" target="_blank" rel="noopener">View source</a>
+    </div>
+  </section>
+
+  <section class="panels">
+
+    <a class="panel" href="https://github.com/kingplayboi/ISAAC" target="_blank" rel="noopener">
+      <div class="tag">[REPO]</div>
+      <h3>Source Code</h3>
+      <p>Full ISAAC-MD codebase on GitHub. Fork it, star it, or read through how it's built.</p>
+      <div class="foot">github.com/kingplayboi/ISAAC <span class="arrow">↗</span></div>
+    </a>
+
+    <a class="panel" href="https://kingpin-sjlx.onrender.com" target="_blank" rel="noopener">
+      <div class="tag">[PAIR]</div>
+      <h3>Get a Session</h3>
+      <p>Generate your SESSION_ID via QR code or pairing code — takes under a minute.</p>
+      <div class="foot">kingpin-sjlx.onrender.com <span class="arrow">↗</span></div>
+    </a>
+
+    <a class="panel" href="https://heroku.com/deploy?template=https://github.com/kingplayboi/ISAAC" target="_blank" rel="noopener">
+      <div class="tag">[DEPLOY]</div>
+      <h3>One-Click Deploy</h3>
+      <p>Spin up your own ISAAC-MD instance on Heroku. No server management required.</p>
+      <div class="foot">heroku.com/deploy <span class="arrow">↗</span></div>
+    </a>
+
+    <a class="panel" href="https://wa.me/254754574642?text=Hello%20ISAAC%20TECH%2C%20I%20have%20a%20question" target="_blank" rel="noopener">
+      <div class="tag">[CONTACT]</div>
+      <h3>Talk to the Dev</h3>
+      <p>Questions, bugs, or feature requests — reach out directly on WhatsApp.</p>
+      <div class="foot">wa.me/254754574642 <span class="arrow">↗</span></div>
+    </a>
+
+  </section>
+
+  <footer>
+    <div>ISAAC TECH © 2026 — made on earth by humans</div>
+    <div><a href="https://github.com/kingplayboi/ISAAC" target="_blank" rel="noopener">GitHub</a> &nbsp;·&nbsp; <a href="https://kingpin-sjlx.onrender.com" target="_blank" rel="noopener">Pairing</a></div>
+  </footer>
+
+</div>
+</body>
+</html>
+ISAACEOF
+wc -l index.html
